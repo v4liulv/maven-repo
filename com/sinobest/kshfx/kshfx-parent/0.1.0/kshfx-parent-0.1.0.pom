@@ -109,11 +109,12 @@
                    <!-- <path>com.sinobest.kshfx</path>-->
                     <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
                     <merge>true</merge>
+                    <!-- 在该站点的根目录下是否总是创造一个.nojekyll文件将。如果您的站点包含任何以下划线开头的文件夹，那么该设置应该启用。-->
                     <noJekyll>true</noJekyll>
-                    <repositoryName>maven-repo</repositoryName>
                     <!-- 对应github上创建的仓库名称 name -->
-                    <repositoryOwner>v4liulv</repositoryOwner>
+                    <repositoryName>maven-repo</repositoryName>
                     <!-- github 仓库所有者 -->
+                    <repositoryOwner>v4liulv</repositoryOwner>
                 </configuration>
                 <executions>
                     <execution>
