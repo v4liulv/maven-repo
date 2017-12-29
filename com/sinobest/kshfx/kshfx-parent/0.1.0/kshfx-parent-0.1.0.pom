@@ -38,6 +38,7 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
         <aspectjweaver.version>1.7.1</aspectjweaver.version>
+        <jackson.version>2.9.2</jackson.version>
         <hibernate.version>5.2.11.Final</hibernate.version>
         <neo4j.version>3.3.1</neo4j.version>
         <spring.data.neo4j.version>5.0.2.RELEASE</spring.data.neo4j.version>
