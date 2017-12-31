@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kshfx-hive</artifactId>
-    <packaging>jar</packaging><!-- 打成jar包 -->
+   <!-- <packaging>jar</packaging>--><!-- 打成jar包 -->
 
     <name>kshfx-hive_${project.version}</name>
     <url>http://maven.apache.org</url>
