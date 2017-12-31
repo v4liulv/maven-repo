@@ -8,14 +8,14 @@
     <artifactId>kshfx-parent</artifactId><!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称 -->
     <version>0.1.0</version> <!--指定Maven工程版本号，用于版本控制 -->
     <modules>
-        <module>core</module>
+        <!--<module>core</module>
         <module>hbase</module>
         <module>ssh</module>
         <module>neo4j</module>
         <module>mapreduce</module>
         <module>hive</module>
         <module>spark</module>
-        <module>titan</module>
+        <module>titan</module>-->
     </modules>
     <packaging>pom</packaging><!--修改打包方式--> <!--The current core packaging values are: pom,jar, maven-plugin, ejb, war, ear, rar, par -->
     <name>kshfx-perent_${project.version}</name><!--指定工程名例如：app --> <!--一些无关太重要的东西，用户描述你的项目的名字,可选的 -->
@@ -93,7 +93,7 @@
     <build>
         <finalName>kshfx-parent-1.0.0</finalName>
         <plugins>
-            <!-- github -->
+            <!-- Maven github -->
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
@@ -103,7 +103,7 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <includes>
-                        <include>**/*</include>
+                        <include>**/*/*</include>
                     </includes>
                    <!-- <path>com.sinobest.kshfx</path>-->
                     <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
@@ -124,6 +124,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Maven deploy 结合上面的Maven-github将本地工程的部署到远程Maven Github仓库-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -132,6 +133,7 @@
                     <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
                 </configuration>
             </plugin>
+            <!-- Maven Enforcer Plugin 定义一些必须遵守的配置 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -155,7 +157,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Maven Java -->
+            <!-- Maven Java 编译-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -165,7 +167,7 @@
                     <target>${jdk-version}</target>
                 </configuration>
             </plugin>
-            <!-- 生成sources源码包的插件 -->
+            <!-- Maven 生成sources源码包的插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -183,7 +185,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 生成javadoc文档包的插件，解决报错添加-Xdoclint:none-->
+            <!-- Maven 生成javadoc文档包的插件，解决报错添加-Xdoclint:none-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -201,11 +203,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- build-helper-maven-plugin插件来支持自定义的项目目录结构(相对于Maven默认目录结构来说)。 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
+            <!-- maven-jar-plugin 默认的打包插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -219,6 +223,7 @@
                     </archive>
                 </configuration>
             </plugin>
+            <!-- Maven 生成全部的依赖包到target\lib目录下 -->
             <!-- ${project.build.directory}为Maven内置变量，缺省为target -->
             <!-- excludeTransitive表示是否不包含间接依赖的包  -->
             <!-- stripVersion表示复制的jar文件去掉版本信息 -->
@@ -241,7 +246,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 打包全部的依赖类都打包到源代码中，需要注释掉maven-dependency-plugin和maven-jar-plugin的方式 -->
+            <!-- Maven 打包全部的依赖类都打包到源代码中，需要注释掉maven-dependency-plugin和maven-jar-plugin的方式 -->
             <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -281,11 +286,13 @@
                     </execution>
                 </executions>
             </plugin>-->
+            <!-- Maven install 将项目输出构件安装到本地仓库  -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.5.2</version>
             </plugin>
+            <!-- mvn clean命令清除target里的内容的同时，也清除work,checkpoint,lib_managed等下的相应目录 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -409,7 +416,7 @@
     <!-- 指定maven仓库 -->
     <repositories>
         <!-- 我自己的GitHub版本库 -->
-        <!--<repository>
+        <repository>
             <id>maven-repo-master</id>
             <url>https://github.com/v4liulv/maven-repo/tree/master</url>
             <releases>
@@ -417,9 +424,8 @@
             </releases>
             <snapshots>
                 <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
             </snapshots>
-        </repository>-->
+        </repository>
         <!-- 本地版本库 -->
         <repository>
             <id>maven-local</id>
