@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kshfx-core</artifactId>
-    <packaging>pom</packaging><!-- 打成jar包 -->
+    <!--<packaging>jar</packaging>--><!-- 打成jar包 -->
 
     <name>kshfx-core_${project.version}</name>
     <url>http://maven.apache.org</url>
