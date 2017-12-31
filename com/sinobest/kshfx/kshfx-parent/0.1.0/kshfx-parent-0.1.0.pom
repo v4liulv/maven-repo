@@ -103,7 +103,7 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <includes>
-                        <include>**/*/*</include>
+                        <include>**</include>
                     </includes>
                    <!-- <path>com.sinobest.kshfx</path>-->
                     <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
