@@ -153,7 +153,7 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${org.codehaus.jackson.version}</version>
         </dependency>
-        <!-- spring4 end -->
+        <!-- spring5 end -->
     </dependencies>
 
 </project>
