@@ -12,7 +12,7 @@
     </parent>
     <artifactId>kshfx-spark</artifactId>
     <!-- 打成jar包 -->
-    <packaging>jar</packaging>
+    <!--<packaging>jar</packaging>-->
 
     <name>kshfx-spark_${project.version}</name>
     <url>http://maven.apache.org</url>
