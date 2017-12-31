@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kshfx-mapreduce</artifactId>
-    <packaging>jar</packaging><!-- 打成jar包 -->
+    <!--<packaging>jar</packaging>--><!-- 打成jar包 -->
 
     <name>kshfx-mapreduce_${project.version}</name>
     <url>http://maven.apache.org</url>
