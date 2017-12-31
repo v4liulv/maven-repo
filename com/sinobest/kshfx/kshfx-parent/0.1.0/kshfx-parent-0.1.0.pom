@@ -8,7 +8,6 @@
     <artifactId>kshfx-parent</artifactId><!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称 -->
     <version>0.1.0</version> <!--指定Maven工程版本号，用于版本控制 -->
     <modules>
-       <!--
         <module>core</module>
         <module>hbase</module>
         <module>ssh</module>
@@ -16,7 +15,7 @@
         <module>mapreduce</module>
         <module>hive</module>
         <module>spark</module>
-        <module>titan</module>-->
+        <module>titan</module>
     </modules>
     <packaging>pom</packaging><!--修改打包方式--> <!--The current core packaging values are: pom,jar, maven-plugin, ejb, war, ear, rar, par -->
     <name>kshfx-perent_${project.version}</name><!--指定工程名例如：app --> <!--一些无关太重要的东西，用户描述你的项目的名字,可选的 -->
@@ -38,7 +37,6 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
         <aspectjweaver.version>1.7.1</aspectjweaver.version>
-        <jackson.version>2.9.2</jackson.version>
         <hibernate.version>5.2.11.Final</hibernate.version>
         <neo4j.version>3.3.1</neo4j.version>
         <spring.data.neo4j.version>5.0.2.RELEASE</spring.data.neo4j.version>
@@ -49,10 +47,11 @@
         <servlet.version>3.0-alpha-1</servlet.version>
         <servlet.jstl>1.2</servlet.jstl>
         <htrace.verion>3.0.4</htrace.verion>
-        <dom4j.verion>1.6.1</dom4j.verion>
+        <dom4j.version>1.6.1</dom4j.version>
         <xmlbeans.version>2.4.0</xmlbeans.version>
         <ogm.version>2.1.2</ogm.version>
-        <jackson.version>1.9.11</jackson.version>
+        <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+        <com.fasterxml.jackson.version>2.9.2</com.fasterxml.jackson.version>
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.5</slf4j.version>
         <fileupload.version>1.2.2</fileupload.version>
@@ -61,7 +60,6 @@
         <fastjson.version>1.1.26</fastjson.version>
         <spring.hadoop.version>2.4.0.RELEASE</spring.hadoop.version>
         <org.jetbrains.version>15.0</org.jetbrains.version>
-        <org.codehaus.jackson.version>1.8.5</org.codehaus.jackson.version>
         <axws-spring-version>1.9</axws-spring-version>
         <jaxws-rt-version>2.2.8</jaxws-rt-version>
         <hibernate-jpa-2.0-api-version>1.0.1.Final</hibernate-jpa-2.0-api-version>
@@ -373,7 +371,7 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
+            <version>1.9.11</version>
         </dependency>
 <!-- mysql数据库驱动 -->
         <dependency>
@@ -391,7 +389,14 @@
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>${dom4j.verion}</version>
+            <version>${dom4j.version}</version>
+            <!-- xml-apis.jar 影响到了WebLogic， exclude -->
+            <exclusions>
+                <exclusion>
+                    <artifactId>xml-apis</artifactId>
+                    <groupId>xml-apis</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 <!-- http client -->
         <!--<dependency>
@@ -404,7 +409,7 @@
     <!-- 指定maven仓库 -->
     <repositories>
         <!-- 我自己的GitHub版本库 -->
-        <repository>
+        <!--<repository>
             <id>maven-repo-master</id>
             <url>https://github.com/v4liulv/maven-repo/tree/master</url>
             <releases>
@@ -414,7 +419,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </snapshots>
-        </repository>
+        </repository>-->
         <!-- 本地版本库 -->
         <repository>
             <id>maven-local</id>
