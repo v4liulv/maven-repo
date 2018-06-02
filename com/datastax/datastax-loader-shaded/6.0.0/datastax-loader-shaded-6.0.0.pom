@@ -13,6 +13,8 @@
     </properties>
 
     <build>
+        <finalName>datastax-shaded-tinkerpop-shaded-${project.version}</finalName>
+
         <plugins>
             <!-- Maven github -->
             <plugin>
