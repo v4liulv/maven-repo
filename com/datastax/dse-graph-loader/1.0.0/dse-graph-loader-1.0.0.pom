@@ -6,7 +6,7 @@
     <groupId>com.datastax</groupId>
     <artifactId>dse-graph-loader</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>dse-graph-loader-${project.version}</name>
     <url>http://maven.apache.org</url><!--Maven官方网站地址 -->
     <description>dse-graph-loader</description><!-- project的描述 -->
