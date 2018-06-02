@@ -1,0 +1,630 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.datastax</groupId>
+    <artifactId>dse-graph-loader</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>dse-graph-loader-${project.version}</name>
+    <url>http://maven.apache.org</url><!--Maven官方网站地址 -->
+    <description>dse-graph-loader</description><!-- project的描述 -->
+    <inceptionYear>2018年5月25日</inceptionYear> <!-- 工程的初始时间 -->
+    <licenses/><!--列出本工程直接的licenses，而不要列出dependencies的licenses -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk-version>1.8</jdk-version>
+        <maven.version>3.3.9</maven.version>
+
+        <cassandra.version>6.0.0</cassandra.version>
+        <!--<java-driver.version>3.1.2</java-driver.version>-->
+        <dse-driver.version>1.1.2</dse-driver.version>
+        <tinkerpop.version>3.1.6</tinkerpop.version>
+        <slf4j.version>1.7.13</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+        <guava.version>16.0.1</guava.version>
+        <neo4j-tinkerpop-api.version>0.1</neo4j-tinkerpop-api.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
+        <yaml.version>1.15</yaml.version>
+        <javatuples.version>1.2</javatuples.version>
+        <hppc.version>0.7.1</hppc.version>
+        <jcabi.version>1.1</jcabi.version>
+        <groovy.version>2.4.7</groovy.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <mapdb.version>1.0.9</mapdb.version>
+        <commons.version>1.4</commons.version>
+        <commons.io.versoon>2.4</commons.io.versoon>
+        <commons-lang3.version>3.3.1</commons-lang3.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <tukaani-xz.version>1.6</tukaani-xz.version>
+        <snappy.version>1.0.5</snappy.version>
+        <lz4.version>1.3.0</lz4.version>
+        <hdr.version>2.1.4</hdr.version>
+        <jackson.version>2.6.3</jackson.version>
+        <esri.version>1.2.1</esri.version>
+        <jackson.version>2.6.3</jackson.version>
+        <joda.version>2.9.1</joda.version>
+        <jsr353-api.version>1.0</jsr353-api.version>
+        <felix.version>4.6.0</felix.version>
+        <testng.version>6.8.8</testng.version>
+        <assertj.version>1.7.0</assertj.version>
+        <mockito.version>1.10.19</mockito.version>
+        <oracle.version>11.2.0.3</oracle.version>
+        <scassandra.version>0.11.0</scassandra.version>
+        <apacheds.version>2.0.0-M19</apacheds.version>
+        <ldapcodec.version>1.0.0-M26</ldapcodec.version>
+        <amazonaws.version>1.11.46</amazonaws.version>
+        <hadoop.version>2.7.1</hadoop.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <junit.version>4.12</junit.version>
+
+        <github.global.server>github</github.global.server>
+
+        <currentYear>2018</currentYear>
+        <ipprefix>127.0.1.</ipprefix>
+        <test.groups>unit</test.groups>
+        <ccm.java.home>none</ccm.java.home>
+        <main.basedir>${project.basedir}</main.basedir>
+    </properties>
+
+    <build>
+        <finalName>dse-graph-loader-${project.version}</finalName>
+
+        <!-- 默认情况下maven只打包src/main/resource和src/main/java下的资源，通过resources-resource-directory方式配置打包的资源 -->
+        <!--maven打包时如何把包下面的非java文件配置文件也包含，通过resources-resource下配置directory和includes实现 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.txt</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.groovy</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.dtd</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+                <!-- Maven github -->
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <!-- GitHub提交的信息 -->
+                    <message>Maven artifacts dse-graph-loader for ${project.version}</message>
+                    <!--提交的目录-->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                    <!--将被更新为提交的分支ref, 其中master为GitHub提交的角色-->
+                    <branch>refs/heads/master</branch>
+                    <!--子元素将被视为从outputDirectory中包含的模式-->
+                    <includes>
+                        <include>**</include>
+                    </includes>
+                    <!-- <path>com.sinobest.kshfx</path>-->
+                    <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
+                    <merge>true</merge>
+                    <!-- 是否强制进行一个ref更新，默认情况下只会快速前进 -->
+                    <force>true</force>
+                    <!-- 在该站点的根目录下是否总是创造一个.nojekyll文件将。如果您的站点包含任何以下划线开头的文件夹，那么该设置应该启用。-->
+                    <noJekyll>true</noJekyll>
+                    <!-- 对应github上创建的仓库名称 name -->
+                    <repositoryName>maven-repo</repositoryName>
+                    <!-- github 仓库所有者 -->
+                    <repositoryOwner>v4liulv</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven deploy 结合上面的Maven-github将本地工程的部署到远程Maven Github仓库-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <!-- Maven Enforcer Plugin 定义一些必须遵守的配置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${maven.version}</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>${java.version}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven Java 编译-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${jdk-version}</source>
+                    <target>${jdk-version}</target>
+                </configuration>
+            </plugin>
+            <!-- Maven 生成sources源码包的插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-source-jar</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven 生成javadoc文档包的插件，解决报错添加-Xdoclint:none-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.2</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- build-helper-maven-plugin插件来支持自定义的项目目录结构(相对于Maven默认目录结构来说)。 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <!-- maven-jar-plugin 默认的打包插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- Maven 生成全部的依赖包到target\lib目录下 -->
+            <!-- ${project.build.directory}为Maven内置变量，缺省为target -->
+            <!-- excludeTransitive表示是否不包含间接依赖的包  -->
+            <!-- stripVersion表示复制的jar文件去掉版本信息 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <excludeTransitive>false</excludeTransitive>
+                            <stripVersion>false</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven 打包全部的依赖类都打包到源代码中，需要注释掉maven-dependency-plugin和maven-jar-plugin的方式 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.defonds.RsaEncryptor</mainClass>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!-- Maven install 将项目输出构件安装到本地仓库  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+            </plugin>
+            <!-- mvn clean命令清除target里的内容的同时，也清除work,checkpoint,lib_managed等下的相应目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>work</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>checkpoint</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>lib_managed</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>alibaba-opensource</id>
+            <name>local private alibaba-opensource</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- 本地版本库 -->
+        <repository>
+            <id>maven-local</id>
+            <url>D:\libs\maven\</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+<!--maven打包编译java工具相关jar-->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+<!-- local-lib -->
+        <dependency>
+            <groupId>com.datastax</groupId>
+            <artifactId>shaded</artifactId>
+            <version>6.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/maven-local-lib/datastax-shaded-tinkerpop-shaded-6.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.apache</groupId>
+            <artifactId>hadoop</artifactId>
+            <version>2.7.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/maven-local-lib/hadoop-2.7.1.jar</systemPath>
+        </dependency>
+
+        <!-- kshfx-core -->
+        <dependency>
+            <groupId>com.sinobest.kshfx</groupId>
+            <artifactId>kshfx-ssh</artifactId>
+            <version>0.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <groupId>org.codehaus.jackson</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>woodstox-core-asl</artifactId>
+                    <groupId>org.codehaus.woodstox</groupId>
+                </exclusion>
+                <!-- <exclusion>
+                     <artifactId>jaxws-rt</artifactId>
+                     <groupId>com.sun.xml.ws</groupId>
+                 </exclusion>-->
+                <exclusion>
+                    <artifactId>axis2-saaj</artifactId>
+                    <groupId>org.apache.axis2</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+<!-- Apache Tinkerpop -->
+       <!-- <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>tinkergraph-gremlin</artifactId>
+            <version>${tinkerpop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-groovy</artifactId>
+            <version>${tinkerpop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-core</artifactId>
+            <version>${tinkerpop.version}</version>
+        </dependency>-->
+
+<!-- dse-driver -->
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>dse-driver</artifactId>
+            <version>${dse-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>dse-driver</artifactId>
+            <version>${dse-driver.version}</version>
+            <classifier>sources</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>cassandra-driver-core</artifactId>
+                    <groupId>com.datastax.cassandra</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+<!-- dse java diver 此项目dse-driver就够了，不需要此driver -->
+        <!--
+       <dependency>
+           <groupId>com.datastax.dse</groupId>
+           <artifactId>dse-java-driver-graph</artifactId>
+           <version>1.6.6</version>
+       </dependency>
+        <dependency>
+             <groupId>com.datastax.cassandra</groupId>
+             <artifactId>cassandra-driver-core</artifactId>
+             <version>${java-driver.version}</version>
+         </dependency>
+         -->
+
+
+<!--tinkerpop 依赖 -->
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-tinkerpop-api</artifactId>
+            <version>${neo4j-tinkerpop-api.version}</version>
+        </dependency>
+       <!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>${commons-configuration.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${yaml.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
+        <dependency>
+            <groupId>org.javatuples</groupId>
+            <artifactId>javatuples</artifactId>
+            <version>${javatuples.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.carrotsearch/hppc -->
+        <dependency>
+            <groupId>com.carrotsearch</groupId>
+            <artifactId>hppc</artifactId>
+            <version>${hppc.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jcabi/jcabi-manifests -->
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-manifests</artifactId>
+            <version>${jcabi.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-groovysh</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <!-- 此版本必须是2.4.7 -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-jsr223</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>${jbcrypt.version}</version>
+        </dependency>
+        <!--tinkerpop 依赖 END -->
+
+ <!--DSE graph Loader 依赖 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io -->
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.io</artifactId>
+            <version>${commons.io.versoon}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mapdb/mapdb -->
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.tukaani/xz -->
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>${tukaani-xz.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.esri.geometry</groupId>
+            <artifactId>esri-geometry-api</artifactId>
+            <version>${esri.version}</version>
+        </dependency>
+        <!-- Optional OSS driver dependencies -->
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <version>${snappy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.jpountz.lz4</groupId>
+            <artifactId>lz4</artifactId>
+            <version>${lz4.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.hdrhistogram</groupId>
+            <artifactId>HdrHistogram</artifactId>
+            <version>${hdr.version}</version>
+        </dependency>
+        <!-- 用到地方JDBCSource类 -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>${oracle.version}</version>
+        </dependency>
+        <!-- 用到地方BasicFileInput -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>${amazonaws.version}</version>
+        </dependency>
+        <!-- 解决 javax.annotation.Nullable;找不到问题 -->
+        <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+        </dependency>
+
+        <!-- MyDailyRollingFileAppender 配置需要包 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+</project>
