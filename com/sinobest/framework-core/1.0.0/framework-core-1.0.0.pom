@@ -29,7 +29,10 @@
         <guava.version>16.0.1</guava.version>
         <fileupload.version>1.2.2</fileupload.version>
         <fastjson.version>1.1.26</fastjson.version>
+        <alibaba.druid.version>0.2.9</alibaba.druid.version>
         <jackson.version>1.9.11</jackson.version>
+        <servlet.jstl>1.2</servlet.jstl>
+        <servlet.version>3.0-alpha-1</servlet.version>
 
         <currentYear>2018</currentYear>
         <ipprefix>127.0.1.</ipprefix>
@@ -147,11 +150,31 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+        <!-- 阿里巴巴druid  -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${alibaba.druid.version}</version>
+        </dependency>
         <!-- Jackson 把Java对象转换成 JSON 字串 -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <!-- jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${servlet.jstl}</version>
+        </dependency>
+        <!-- servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <!-- 解决tomcat中也有servlet-api包，发生了冲突，因为provided表明该包只在编译和测试的时候用 -->
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- axis2 开始  -->
