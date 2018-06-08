@@ -22,9 +22,9 @@
 
         <junit.version>4.12</junit.version>
         <axis2.version>1.7.4</axis2.version>
-        <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.9.1</log4j2.version>
-        <slf4j.version>1.7.5</slf4j.version>
+        <!--<log4j.version>1.2.17</log4j.version>-->
+        <log4j2.version>2.8.2</log4j2.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <dom4j.version>1.6.1</dom4j.version>
         <guava.version>16.0.1</guava.version>
         <fileupload.version>1.2.2</fileupload.version>
