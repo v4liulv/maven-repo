@@ -84,11 +84,11 @@
             <version>${junit.version}</version>
         </dependency>
         <!-- log4j -->
-        <dependency>
+        <!--<dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- log4j 2 -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
