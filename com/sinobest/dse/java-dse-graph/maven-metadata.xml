@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.sinobest.dse</groupId>
+  <artifactId>java-dse-graph</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-beta2-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20180707102503</lastUpdated>
+  </versioning>
+</metadata>
