@@ -55,6 +55,13 @@
             <groupId>com.sinobest</groupId>
             <artifactId>framework-editor</artifactId>
             <version>${framework.version}</version>
+
+            <exclusions>
+                <exclusion>
+                    <artifactId>framework-ssh</artifactId>
+                    <groupId>com.sinobest</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- spring mvc -->
