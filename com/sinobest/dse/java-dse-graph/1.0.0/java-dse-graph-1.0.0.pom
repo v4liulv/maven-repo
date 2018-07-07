@@ -8,10 +8,17 @@
         <artifactId>dse-graph-parent</artifactId>
         <groupId>com.sinobest.dse</groupId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-dse-graph</artifactId>
+
+    <name>java-dse-graph_${project.version}</name>
+
+    <build>
+        <finalName>java-dse-graph-${project.version}</finalName>
+    </build>
 
     <dependencies>
 
