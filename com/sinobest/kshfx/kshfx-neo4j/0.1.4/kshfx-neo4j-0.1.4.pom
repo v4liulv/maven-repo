@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kshfx-parent</artifactId>
+        <groupId>com.sinobest.kshfx</groupId>
+        <version>0.1.4</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kshfx-neo4j</artifactId>
+    <!--<packaging>jar</packaging>--><!-- 打成jar包 -->
+
+    <name>kshfx-neo4j_${project.version}</name>
+    <url>http://maven.apache.org</url>
+
+    <build>
+        <finalName>kshfx-neo4j-${project.version}</finalName>
+    </build>
+
+    <dependencies>
+        <!-- framework-ssh -->
+        <dependency>
+            <groupId>com.sinobest</groupId>
+            <artifactId>framework-ssh</artifactId>
+            <version>${framework.version}</version>
+
+            <exclusions>
+                <exclusion>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <groupId>org.codehaus.jackson</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>woodstox-core-asl</artifactId>
+                    <groupId>org.codehaus.woodstox</groupId>
+                </exclusion>
+                <!-- <exclusion>
+                     <artifactId>jaxws-rt</artifactId>
+                     <groupId>com.sun.xml.ws</groupId>
+                 </exclusion>-->
+                <exclusion>
+                    <artifactId>axis2-saaj</artifactId>
+                    <groupId>org.apache.axis2</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- framework-editor -->
+        <dependency>
+            <groupId>com.sinobest</groupId>
+            <artifactId>framework-editor</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <!-- spring mvc -->
+        <!--  <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-webmvc</artifactId>
+              <version>${spring.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-jdbc</artifactId>
+              <version>${spring.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+              <version>${com.fasterxml.jackson.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+              <version>${com.fasterxml.jackson.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>org.codehaus.jackson</groupId>
+              <artifactId>jackson-jaxrs</artifactId>
+              <version>${org.codehaus.jackson.version}</version>
+          </dependency>-->
+
+        <!-- neo4j JDBC conn -->
+        <!--<dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-jdbc-driver</artifactId>
+            <version>${neo4j-jdbc-version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-jdbc-bolt</artifactId>
+            <version>${neo4j-jdbc-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-jdbc-http</artifactId>
+            <version>${neo4j-jdbc-version}</version>
+        </dependency>
+        <!-- Neo4j java driver依赖包 -->
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>${neo4j.java.driver.version}</version>
+        </dependency>
+        <!-- Spring data neo4j -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-neo4j</artifactId>
+            <version>${spring.data.neo4j.version}</version>
+        </dependency>
+        <!-- neo4j batch inserter start -->
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-kernel</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-lucene-index</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.voodoodyne.jackson.jsog</groupId>
+            <artifactId>jackson-jsog</artifactId>
+            <version>1.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-embedded-driver</artifactId>
+            <version>${ogm.version}</version>
+        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.apache.httpcomponents</groupId>
+             <artifactId>httpclient</artifactId>
+             <version>4.3.6</version>
+         </dependency>-->
+        <!--包含常用的测试所需的依赖，如 JUnit、Hamcrest、Mockito 和 spring-test 等。  -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+           <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>-->
+        <!-- Spring data neo4j end -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>servlet-api-2.5</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jackson-core-asl</artifactId>
+                    <groupId>org.codehaus.jackson</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <groupId>org.codehaus.jackson</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-hive-thriftserver -->
+        <!--  <dependency>
+              <groupId>org.apache.spark</groupId>
+              <artifactId>spark-hive-thriftserver_2.11</artifactId>
+              <version>2.2.0</version>
+              <scope>provided</scope>
+          </dependency>-->
+
+    </dependencies>
+
+</project>
