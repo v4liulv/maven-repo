@@ -25,13 +25,11 @@
         <dependency>
             <groupId>com.sinobest</groupId>
             <artifactId>framework-core</artifactId>
-            <version>${sinobest.framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.datastax.dse</groupId>
             <artifactId>dse-java-driver-graph</artifactId>
-            <version>${dse-graph-driver.version}</version>
         </dependency>
 
     </dependencies>
