@@ -153,13 +153,31 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-
         <repository>
             <id>maven-repo-master</id>
             <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- cloudera CHD版本库 -->
+        <repository>
+            <id>mapreduce</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+        <!-- phonix 版本库-->
+        <repository>
+            <id>apache release</id>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+        </repository>
+        <!-- spring 版本库 -->
+        <repository>
+            <id>spring-libs-snapshot</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/libs-snapshot</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
