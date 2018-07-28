@@ -15,11 +15,11 @@
     <version>1.0.0</version>
 
     <dependencies>
-        <dependency>
+      <!-- <dependency>
             <groupId>com.sinobest.sd</groupId>
             <artifactId>sjrk-ssh</artifactId>
             <version>1.0.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
