@@ -11,6 +11,7 @@
         <relativePath>../sjcl-parent/pom.xml</relativePath>
     </parent>
 
+    <groupId>com.sinobest.sd</groupId>
     <artifactId>sjrk-core</artifactId>
     <version>1.0.0</version>
 
