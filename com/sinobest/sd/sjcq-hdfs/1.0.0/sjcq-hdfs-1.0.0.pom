@@ -10,6 +10,7 @@
         <version>1.0.0</version>
     </parent>
 
+    <groupId>com.sinobest.sd</groupId>
     <artifactId>sjcq-hdfs</artifactId>
     <version>1.0.0</version>
 
@@ -27,7 +28,24 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>maven-repo-master</id>
+            <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>sjrk-hdfs-${project.version}</finalName>
