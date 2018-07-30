@@ -8,12 +8,25 @@
         <groupId>com.sinobest.sd</groupId>
         <artifactId>sjrk-parent</artifactId>
         <version>1.0.0</version>
-        <relativePath>../sjcl-parent/pom.xml</relativePath>
+        <!--<relativePath>../sjcl-parent/pom.xml</relativePath>-->
     </parent>
 
     <groupId>com.sinobest.sd</groupId>
     <artifactId>sjrk-core</artifactId>
     <version>1.0.0</version>
+
+    <repositories>
+        <repository>
+            <id>maven-repo-master</id>
+            <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
       <!-- <dependency>
