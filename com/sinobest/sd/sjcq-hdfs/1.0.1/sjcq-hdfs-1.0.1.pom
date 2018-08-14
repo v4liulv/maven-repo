@@ -69,7 +69,7 @@
     </repositories>
 
     <build>
-        <finalName>sjrk-hdfs-${project.version}</finalName>
+        <finalName>sjcq-hdfs-${project.version}</finalName>
 
         <resources>
             <resource>
