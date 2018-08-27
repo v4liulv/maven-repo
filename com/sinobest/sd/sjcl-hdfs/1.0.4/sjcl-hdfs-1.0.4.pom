@@ -44,15 +44,9 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        <!-- slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.10</version>
         </dependency>
 
     </dependencies>
@@ -71,7 +65,7 @@
     </repositories>
 
     <build>
-        <finalName>sjcq-hdfs-${project.version}</finalName>
+        <finalName>sjcl-hdfs-${project.version}</finalName>
 
         <resources>
             <resource>
