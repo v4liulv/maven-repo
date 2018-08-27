@@ -24,6 +24,11 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <!-- hdp 版本库-->
+        <repository>
+            <id>hdp release</id>
+            <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -42,42 +47,27 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
-            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-annotations</artifactId>
-            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-yarn-client</artifactId>
-            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-minicluster</artifactId>
-            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-common</artifactId>
-            <version>${hbase.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>sjrk-core-${project.version}</finalName>
+        <finalName>sjcl-core-${project.version}</finalName>
 
         <resources>
             <resource>
@@ -94,7 +84,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
             </plugin>
             <!-- maven-jar-plugin 默认的打包插件-->
             <plugin>
