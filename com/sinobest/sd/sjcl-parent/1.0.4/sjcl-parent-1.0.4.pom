@@ -41,11 +41,11 @@
         <spring.hadoop.version>2.4.0.RELEASE</spring.hadoop.version>
 
         <!-- <<<<<<<<<<<<<<<<<<<< cluster verssion >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-        <hadoop.version>${hdp.hadoop.version}</hadoop.version>
-        <hbase.version>${hdp.hbase.version}</hbase.version>
-        <phoenix.version>${hdp.phoenix.version}</phoenix.version>
-        <hive.version>${hdp.hive.version}</hive.version>
-        <spark.version>${hdp.spark.version}</spark.version>
+        <hadoop.version>${cdh.hadoop.version}</hadoop.version>
+        <hbase.version>${cdh.hbase.version}</hbase.version>
+        <phoenix.version>${cdh.phoenix.version}</phoenix.version>
+        <hive.version>${cdh.hive.version}</hive.version>
+        <spark.version>${cdh.spark.version}</spark.version>
 
         <!-- <<<<<<<<<<<<<<<<<<<< cdh5.7.1 >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <cdh.hadoop.version>2.6.0-cdh5.7.1</cdh.hadoop.version>
@@ -477,6 +477,12 @@
                         </fileset>
                     </filesets>
                 </configuration>
+            </plugin>
+            <!-- 解决打包@Test测试用例报错 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
         </plugins>
 
