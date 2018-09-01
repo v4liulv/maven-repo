@@ -25,10 +25,6 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-hadoop</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
         </dependency>
@@ -81,7 +77,7 @@
                 </includes>
             </resource>
             <resource>
-                <directory>webapp/config/conf-cdh</directory>
+                <directory>webapp/config/conf-hdp</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
@@ -100,8 +96,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
             </plugin>
-            <!-- build-helper-maven-plugin插件来支持自定义的项目目录结构(相对于Maven默认目录结构来说)。
-                 如果选择shade打全量包，必须去掉此项 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
