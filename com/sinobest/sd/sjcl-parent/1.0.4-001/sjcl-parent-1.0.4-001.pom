@@ -6,6 +6,7 @@
 
     <groupId>com.sinobest.sd</groupId>
     <artifactId>sjcl-parent</artifactId>
+    <!-- -000代表hdp平台，-001代表cdh平台 -->
     <version>1.0.4-001</version>
 
     <packaging>pom</packaging>
@@ -37,6 +38,8 @@
         <logback.version>1.2.3</logback.version>
         <log4j.version>2.8.2</log4j.version>
         <joda-time.version>2.10</joda-time.version>
+        <ant.version>1.9.4</ant.version>
+        <guava.version>16.0.1</guava.version>
 
         <spring.hadoop.version>2.4.0.RELEASE</spring.hadoop.version>
 
@@ -194,6 +197,17 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>${ant.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
             <!-- hadoop -->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
