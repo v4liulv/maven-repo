@@ -23,21 +23,16 @@
 
         <!-- <<<<<<<<<<<<<<<<<<<< cluster version: cdh571,hdp2550,fic70,fic52,my >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <bigdata.cluster.version>hdp2550</bigdata.cluster.version>
-        <!-- cluster-hadoop -->
-        <bigdata.cluster.hadoop.version>${bigdata.cluster.version}.hadoop.version</bigdata.cluster.hadoop.version>
-        <hadoop.version>${bigdata.cluster.hadoop.version}</hadoop.version>
+
+        <hadoop.version>${hdp2550.hadoop.version}</hadoop.version>
         <!-- cluster-hbase -->
-        <bigdata.cluster.hbase.version>${bigdata.cluster.version}.hbase.version</bigdata.cluster.hbase.version>
-        <hbase.version>${bigdata.cluster.hbase.version}</hbase.version>
+        <bigdata.cluster.hbase.version>${hdp2550.hbase.version}</bigdata.cluster.hbase.version>
         <!-- cluster-hbase phoenix -->
-        <bigdata.cluster.phoenix.version>${bigdata.cluster.version}.phoenix.version</bigdata.cluster.phoenix.version>
-        <phoenix.version>${bigdata.cluster.phoenix.version}</phoenix.version>
+       <phoenix.version>${hdp2550.phoenix.version}</phoenix.version>
         <!-- cluster-hive -->
-        <bigdata.cluster.hive.version>${bigdata.cluster.version}.hive.version</bigdata.cluster.hive.version>
-        <hive.version>${bigdata.cluster.hive.version}</hive.version>
+       <hive.version>${hdp2550.hive.version}</hive.version>
         <!-- cluster-spark -->
-        <bigdata.cluster.spark.version>${bigdata.cluster.version}.spark.version</bigdata.cluster.spark.version>
-        <spark.version>${bigdata.cluster.spark.version}</spark.version>
+       <spark.version>${hdp2550.spark.version}</spark.version>
 
         <!-- <<<<<<<<<<<<<<<<<<<< cdh5.7.1 >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <cdh571.hadoop.version>2.6.0-cdh5.7.1</cdh571.hadoop.version>
@@ -94,7 +89,7 @@
         <ipprefix>127.0.1.</ipprefix>
         <test.groups>unit</test.groups>
         <ccm.java.home>none</ccm.java.home>
-        <main.basedir>${project.basedir}</main.basedir>
+        <main.basedir>${project.basedir}/webapp/config</main.basedir>
     </properties>
 
     <dependencyManagement>
