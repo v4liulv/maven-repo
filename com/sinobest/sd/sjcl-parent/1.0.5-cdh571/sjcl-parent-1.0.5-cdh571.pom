@@ -24,7 +24,7 @@
         <!-- <<<<<<<<<<<<<<<<<<<< cluster version: cdh571,hdp2550,fic70,fic52,my >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <bigdata.cluster.version>cdh571</bigdata.cluster.version>
 
-        <hadoop.version>${cdh571.hadoop.version}</hadoop.version>
+        <hadoop.version>$cdh571.hadoop.version}</hadoop.version>
         <!-- cluster-hbase -->
         <hbase.version>${cdh571.hbase.version}</hbase.version>
         <!-- cluster-hbase phoenix -->
@@ -82,6 +82,8 @@
         <joda-time.version>2.10</joda-time.version>
         <ant.version>1.9.4</ant.version>
         <guava.version>16.0.1</guava.version>
+        <ojdbc6.version>11.2.0.3</ojdbc6.version>
+        <dom4j.versin>1.6.1</dom4j.versin>
 
         <currentYear>2018</currentYear>
         <ipprefix>127.0.1.</ipprefix>
@@ -204,6 +206,16 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>ojdbc6</artifactId>
+                <version>${ojdbc6.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.versin}</version>
+            </dependency>
             <!-- hadoop -->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
@@ -226,6 +238,11 @@
                 <version>${hadoop.version}</version>
             </dependency>
             <!-- hbase -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-server</artifactId>
+                <version>${hbase.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.hbase</groupId>
                 <artifactId>hbase-common</artifactId>
