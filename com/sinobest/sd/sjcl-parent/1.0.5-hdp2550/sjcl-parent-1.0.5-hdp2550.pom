@@ -83,6 +83,7 @@
         <ant.version>1.9.4</ant.version>
         <guava.version>16.0.1</guava.version>
         <ojdbc6.version>11.2.0.3</ojdbc6.version>
+        <dom4j.versin>1.6.1</dom4j.versin>
 
         <currentYear>2018</currentYear>
         <ipprefix>127.0.1.</ipprefix>
@@ -209,6 +210,11 @@
                 <groupId>com.oracle</groupId>
                 <artifactId>ojdbc6</artifactId>
                 <version>${ojdbc6.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.versin}</version>
             </dependency>
             <!-- hadoop -->
             <dependency>
