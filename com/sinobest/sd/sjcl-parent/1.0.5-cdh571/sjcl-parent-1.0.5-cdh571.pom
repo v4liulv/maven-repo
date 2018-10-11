@@ -23,8 +23,8 @@
 
         <!-- <<<<<<<<<<<<<<<<<<<< cluster version: cdh571,hdp2550,fic70,fic52,my >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <bigdata.cluster.version>cdh571</bigdata.cluster.version>
-
-        <hadoop.version>$cdh571.hadoop.version}</hadoop.version>
+        <!-- cluster-hadoop -->
+        <hadoop.version>${cdh571.hadoop.version}</hadoop.version>
         <!-- cluster-hbase -->
         <hbase.version>${cdh571.hbase.version}</hbase.version>
         <!-- cluster-hbase phoenix -->
