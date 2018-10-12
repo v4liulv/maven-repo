@@ -3,10 +3,10 @@
   <groupId>com.sinobest.sd</groupId>
   <artifactId>sjcl-core</artifactId>
   <versioning>
-    <release>1.0.5-hdp2550</release>
+    <release>1.0.5-cdh571</release>
     <versions>
-      <version>1.0.5-hdp2550</version>
+      <version>1.0.5-cdh571</version>
     </versions>
-    <lastUpdated>20181012084407</lastUpdated>
+    <lastUpdated>20181012085318</lastUpdated>
   </versioning>
 </metadata>
