@@ -23,7 +23,7 @@
 
         <!-- <<<<<<<<<<<<<<<<<<<< cluster version: cdh571,hdp2550,fic70,fic52,my >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <bigdata.cluster.version>hdp2550</bigdata.cluster.version>
-
+        <!-- cluster-hadoop -->
         <hadoop.version>${hdp2550.hadoop.version}</hadoop.version>
         <!-- cluster-hbase -->
         <hbase.version>${hdp2550.hbase.version}</hbase.version>
@@ -238,6 +238,11 @@
                 <version>${hadoop.version}</version>
             </dependency>
             <!-- hbase -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-server</artifactId>
+                <version>${hbase.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.hbase</groupId>
                 <artifactId>hbase-common</artifactId>
