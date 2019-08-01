@@ -87,7 +87,8 @@
     </dependencies>
 
     <build>
-        <finalName>sjcl-core-${project.version}</finalName>
+        <!--<finalName>sjcl-core-${project.version}</finalName>-->
+        <finalName>sjcl-core</finalName>
 
         <resources>
             <resource>
