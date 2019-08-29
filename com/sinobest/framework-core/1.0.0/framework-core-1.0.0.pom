@@ -29,10 +29,12 @@
         <guava.version>16.0.1</guava.version>
         <fileupload.version>1.2.2</fileupload.version>
         <fastjson.version>1.1.26</fastjson.version>
-        <alibaba.druid.version>1.1.10</alibaba.druid.version>
+        <alibaba.druid.version>1.1.12</alibaba.druid.version>
         <jackson.version>1.9.11</jackson.version>
         <servlet.jstl>1.2</servlet.jstl>
         <servlet.version>3.0-alpha-1</servlet.version>
+        <orcale.version>11.2.0.3</orcale.version>
+        <commons-lang.version>2.6</commons-lang.version>
 
         <currentYear>2018</currentYear>
         <ipprefix>127.0.1.</ipprefix>
@@ -221,10 +223,15 @@
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
+            <version>${orcale.version}</version>
         </dependency>
         <!-- Oracle DriverEnd -->
 
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -351,7 +358,7 @@
                 </executions>
             </plugin>
             <!-- Maven 生成javadoc文档包的插件，解决报错添加-Xdoclint:none-->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.2</version>
@@ -367,7 +374,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <!-- build-helper-maven-plugin插件来支持自定义的项目目录结构(相对于Maven默认目录结构来说)。 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
