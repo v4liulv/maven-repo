@@ -41,13 +41,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <!-- 本地版本库 -->
-        <repository>
-            <id>maven-local</id>
-            <url>D:\libs\maven\</url>
-        </repository>
-
-        <!-- 我自己的GitHub版本库 -->
+        <!-- liulv的GitHub版本库 -->
         <repository>
             <id>maven-repo-master</id>
             <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
@@ -101,7 +95,7 @@
         <testSourceDirectory>java-test</testSourceDirectory>
 
         <!--maven打包时如何把包下面的非java文件配置文件也包含，通过resources-resource下配置directory和includes实现 -->
-        <resources>
+        <!--<resources>
             <resource>
                 <directory>resources</directory>
                 <includes>
@@ -119,7 +113,7 @@
                     <include>**/*.dtd</include>
                 </includes>
             </resource>
-        </resources>
+        </resources>-->
 
         <plugins>
             <!-- Maven github 可选 -->
