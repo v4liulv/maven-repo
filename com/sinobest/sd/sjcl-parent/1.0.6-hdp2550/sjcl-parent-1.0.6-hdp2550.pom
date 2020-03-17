@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sinobest.sd</groupId>
+    <artifactId>sjcl-parent</artifactId>
+    <!-- -hdp2550代表山东浪潮HDP平台，-cdh571代表CDH平台 -->
+    <version>1.0.6-hdp2550</version>
+
+    <packaging>pom</packaging>
+
+    <name>sjcl-parent-${project.version}</name>
+
+    <description>山东技侦数据入库-数据处理组件</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk-version>1.8</jdk-version>
+        <maven.version>3.3.9</maven.version>
+        <github.global.server>github</github.global.server>
+
+        <!-- <<<<<<<<<<<<<<<<<<<< cluster version: cdh571,hdp2550,fic70,fic52,my >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <bigdata.cluster.version>cdh571</bigdata.cluster.version>
+        <!-- cluster-hadoop -->
+        <hadoop.version>${hdp2550.hadoop.version}</hadoop.version>
+        <!-- cluster-hbase -->
+        <hbase.version>${hdp2550.hbase.version}</hbase.version>
+        <!-- cluster-hbase phoenix -->
+        <phoenix.version>${hdp2550.phoenix.version}</phoenix.version>
+        <!-- cluster-hive -->
+        <hive.version>${hdp2550.hive.version}</hive.version>
+        <!-- cluster-spark -->
+        <spark.version>${hdp2550.spark.version}</spark.version>
+
+        <!-- <<<<<<<<<<<<<<<<<<<< cdh5.7.1 >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <cdh571.hadoop.version>2.6.0-cdh5.7.1</cdh571.hadoop.version>
+        <cdh571.hbase.version>1.2.0-cdh5.7.1</cdh571.hbase.version>
+        <cdh571.phoenix.version>4.12.0-HBase-1.2</cdh571.phoenix.version>
+        <cdh571.hive.version>1.1.0-cdh5.7.1</cdh571.hive.version>
+        <cdh571.spark.version>1.6.0-cdh5.7.1</cdh571.spark.version>
+
+        <!-- 山东浪潮HDP2.5.5.0 -->
+        <hdp2550.hadoop.version>2.7.3.2.5.5.0-157</hdp2550.hadoop.version>
+        <hdp2550.hbase.version>1.1.2.2.5.5.0-157</hdp2550.hbase.version>
+        <hdp2550.phoenix.version>4.11.0-HBase-1.1</hdp2550.phoenix.version>
+        <hdp2550.hive.version>1.2.1000.2.5.5.0-157</hdp2550.hive.version>
+        <hdp2550.kafka.version>0.10.0.2.5.5.0-157</hdp2550.kafka.version>
+        <hdp2550.spark.version>1.6.3.2.5.5.0-157</hdp2550.spark.version>
+
+        <!-- <<<<<<<<<<<<<<<<<<<< fi70 >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <fic70-hadoop.version>2.7.3</fic70-hadoop.version>
+        <fic70-hbase.version>1.0.2</fic70-hbase.version>
+        <fic70-hive.version>1.2.0</fic70-hive.version>
+        <fic70-spark.version>1.5.1</fic70-spark.version>
+        <!-- <<<<<<<<<<<<<<<<<<<< fi5.2 >>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <fic52-hadoop.version>2.7.1</fic52-hadoop.version>
+        <fic52-hbase.version>1.0.0</fic52-hbase.version>
+        <fic52-hive.version>1.1.0</fic52-hive.version>
+        <fic52-spark.version>1.3.0</fic52-spark.version>
+
+        <!-- <<<<<<<<<<<<<<<<<<<<Master集群大数据相关最新版本组件>>>>>>>>>>>>>>>>>>>> -->
+        <my.hadoop.version>2.7.4</my.hadoop.version>
+        <my.hbase.version>1.3.1</my.hbase.version>
+        <my.phoenix.version>4.13.0-HBase-1.3</my.phoenix.version>
+        <my.hive.version>2.3.1</my.hive.version>
+        <my.spark.version>2.2.0</my.spark.version>
+        <my.zookeeper.version>3.4.9</my.zookeeper.version>
+
+
+        <framework.version>1.0.0</framework.version>
+        <spring.hadoop.version>2.4.0.RELEASE</spring.hadoop.version>
+        <commons-csv.version>1.4</commons-csv.version>
+        <commons.compress.version>1.17</commons.compress.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-net.version>3.6</commons-net.version>
+        <tukaani-xz.version>1.0</tukaani-xz.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <log4j.version>2.8.2</log4j.version>
+        <joda-time.version>2.10</joda-time.version>
+        <ant.version>1.9.4</ant.version>
+        <guava.version>16.0.1</guava.version>
+        <ojdbc6.version>11.2.0.3</ojdbc6.version>
+        <dom4j.versin>1.6.1</dom4j.versin>
+
+        <currentYear>2018</currentYear>
+        <ipprefix>127.0.1.</ipprefix>
+        <test.groups>unit</test.groups>
+        <ccm.java.home>none</ccm.java.home>
+        <main.basedir>${project.basedir}/webapp/config</main.basedir>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- sinobest framework -->
+            <dependency>
+                <groupId>com.sinobest</groupId>
+                <artifactId>framework-core</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sinobest</groupId>
+                <artifactId>framework-ssh</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sinobest</groupId>
+                <artifactId>framework-editor.md</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <!-- Spring data hadoop (hive)-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-hadoop</artifactId>
+                <version>${spring.hadoop.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context-support</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-web</artifactId>
+                <version>${log4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${commons-csv.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.tukaani</groupId>
+                <artifactId>xz</artifactId>
+                <version>${tukaani-xz.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>${ant.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>ojdbc6</artifactId>
+                <version>${ojdbc6.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.versin}</version>
+            </dependency>
+            <!-- hadoop -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-annotations</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-yarn-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-minicluster</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <!-- hbase -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-server</artifactId>
+                <version>${hbase.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-common</artifactId>
+                <version>${hbase.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Hive -->
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-metastore</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-service</artifactId>
+                <version>${hive.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-common</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-jdbc</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-shims</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-serde</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-contrib</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <repositories>
+        <repository>
+            <id>alibaba-opensource</id>
+            <name>local private alibaba-opensource</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-repo-master</id>
+            <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- cloudera CHD版本库 -->
+        <repository>
+            <id>mapreduce</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+        <!-- phonix 版本库-->
+        <repository>
+            <id>apache release</id>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+        </repository>
+        <!-- spring 版本库 -->
+        <repository>
+            <id>spring-libs-snapshot</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- hdp 版本库-->
+        <repository>
+            <id>hdp release</id>
+            <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <finalName>sjrk-parent-${project.version}</finalName>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <!--maven打包时如何把包下面的非java文件配置文件也包含，通过resources-resource下配置directory和includes实现 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+
+        </resources>
+
+        <!-- 公共插件，全部子项目都继承 -->
+        <plugins>
+            <!-- Maven github 可选 -->
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                    <branch>refs/heads/master</branch>
+                    <includes>
+                        <include>**</include>
+                    </includes>
+                    <!-- <path>com.sinobest.kshfx</path>-->
+                    <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
+                    <merge>true</merge>
+                    <!-- 是否强制进行一个ref更新，默认情况下只会快速前进 -->
+                    <force>true</force>
+                    <!-- 在该站点的根目录下是否总是创造一个.nojekyll文件将。如果您的站点包含任何以下划线开头的文件夹，那么该设置应该启用。-->
+                    <noJekyll>true</noJekyll>
+                    <!-- 对应github上创建的仓库名称 name -->
+                    <repositoryName>maven-repo</repositoryName>
+                    <!-- github 仓库所有者 -->
+                    <repositoryOwner>v4liulv</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven Enforcer Plugin 定义一些必须遵守的配置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${maven.version}</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>${java.version}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven Java 编译-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${jdk-version}</source>
+                    <target>${jdk-version}</target>
+                </configuration>
+            </plugin>
+            <!-- Maven 生成sources源码包的插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-source-jar</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Maven 生成javadoc文档包的插件，解决报错添加-Xdoclint:none-->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.2</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!-- Maven install 将项目输出构件安装到本地仓库  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+            </plugin>
+            <!-- mvn clean命令清除target里的内容的同时，也清除work,checkpoint,lib_managed等下的相应目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>work</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>checkpoint</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>lib_managed</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <!-- 解决打包@Test测试用例报错 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- （可选，根据github是否选择而选择）Maven deploy 结合上面的Maven-github将本地工程的部署到远程Maven Github仓库-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                    <configuration>
+                        <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo
+                        </altDeploymentRepository>
+                    </configuration>
+                </plugin>
+
+                <!-- build-helper-maven-plugin插件来支持自定义的项目目录结构(相对于Maven默认目录结构来说)。
+                 如果选择shade打全量包，必须去掉此项 -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- maven-jar-plugin 默认的打包插件-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <classpathPrefix>lib/</classpathPrefix>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <!-- Maven 生成全部的依赖包到target\lib目录下,
+                如果选择shade打全量包，必须去掉此项 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <!-- ${project.build.directory}为Maven内置变量，缺省为target -->
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                <excludeTransitive>false</excludeTransitive><!-- excludeTransitive表示是否不包含间接依赖的包  -->
+                                <stripVersion>false</stripVersion><!-- stripVersion表示是否复制的jar文件去掉版本信息 -->
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Maven 打包全部的依赖类都打包到源代码中，需要注释掉maven-dependency-plugin和maven-jar-plugin的方式 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.4.3</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.SF</exclude>
+                                            <exclude>META-INF/*.DSA</exclude>
+                                            <exclude>META-INF/*.RSA</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                                <transformers>
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <mainClass>com.defonds.RsaEncryptor</mainClass>
+                                    </transformer>
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.handlers</resource>
+                                    </transformer>
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.schemas</resource>
+                                    </transformer>
+                                </transformers>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+
+</project>
