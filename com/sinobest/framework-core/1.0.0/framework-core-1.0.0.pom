@@ -39,6 +39,7 @@
         <servlet.jstl>1.2</servlet.jstl>
         <servlet.version>3.0-alpha-1</servlet.version>
         <orcale.version>11.2.0.3</orcale.version>
+        <mysql.version>8.0.33</mysql.version>
         <commons-lang.version>2.6</commons-lang.version>
 
         <currentYear>2018</currentYear>
@@ -251,6 +252,13 @@
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
+        <!-- MySQL DriverStart -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
 
     </dependencies>
 
