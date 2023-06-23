@@ -62,10 +62,10 @@
             </snapshots>
         </repository>
         <!-- 本地版本库 -->
-        <repository>
+       <!-- <repository>
             <id>maven-local</id>
             <url>C:\doc\maven_lib\</url>
-        </repository>
+        </repository>-->
 
         <!-- liulv的GitHub版本库 -->
        <!-- <repository>
