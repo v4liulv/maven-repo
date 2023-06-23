@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
           http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -63,13 +63,24 @@
         <!-- 本地版本库 -->
         <repository>
             <id>maven-local</id>
-            <url>D:\libs\maven\</url>
+            <url>C:\doc\maven_lib\</url>
         </repository>
 
         <!-- liulv的GitHub版本库 -->
-        <repository>
+       <!-- <repository>
             <id>maven-repo-master</id>
             <url>https://raw.githubusercontent.com/v4liulv/maven-repo/master</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>-->
+
+        <repository>
+            <id>maven-repo-master</id>
+            <url>https://github.com/v4liulv/maven-repo/master</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -276,22 +287,18 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.12</version>
                 <configuration>
+                    <server>github</server>
                     <message>Maven artifacts for ${project.version}</message>
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <includes>
                         <include>**</include>
                     </includes>
-                    <!-- <path>com.sinobest.kshfx</path>-->
-                    <!-- 是否与当前树合并，或者完全替换提交指向的树, 默认为false-->
+                    <!--<path>com.sinobest.framework</path>-->
                     <merge>true</merge>
-                    <!-- 是否强制进行一个ref更新，默认情况下只会快速前进 -->
                     <force>true</force>
-                    <!-- 在该站点的根目录下是否总是创造一个.nojekyll文件将。如果您的站点包含任何以下划线开头的文件夹，那么该设置应该启用。-->
                     <noJekyll>true</noJekyll>
-                    <!-- 对应github上创建的仓库名称 name -->
                     <repositoryName>maven-repo</repositoryName>
-                    <!-- github 仓库所有者 -->
                     <repositoryOwner>v4liulv</repositoryOwner>
                 </configuration>
                 <executions>
@@ -309,8 +316,7 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo
-                    </altDeploymentRepository>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
                 </configuration>
             </plugin>
             <!-- Maven Enforcer Plugin 定义一些必须遵守的配置 -->
